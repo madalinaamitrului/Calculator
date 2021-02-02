@@ -9,6 +9,7 @@ function isMark(value){
         case '-':
         case '*':
         case '=':
+        case '^':
             return true;
         default:
             return false;
@@ -17,7 +18,7 @@ function isMark(value){
 
 function addValue(value){
     if(expression || !isMark(value)){
-        if(!isMark(value)){//isnumber or decimal
+        if(!isMark(value)){
             expression += value;
             $("#current-text").text(expression);
         }else{
@@ -43,7 +44,8 @@ function calculate(a, b, mark){
       result = parseFloat(a) * parseFloat(b);
     } else if (mark === '/') {
       result =  parseFloat(a) / parseFloat(b);
-    }
+    } else if ( mark === '^') {
+      result= parseFloat(a) ** parseFloat(b);
     
     return result;
 }
@@ -92,8 +94,4 @@ function deleteLastChar(){
     var stringWithoutLastChar = currentExpression.slice(0, -1);
     $("#current-text").text(stringWithoutLastChar);
     expression= stringWithoutLastChar;
-}
-
-function changeSign(){
-    expression *= (-1);
 }
