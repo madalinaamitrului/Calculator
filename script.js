@@ -8,8 +8,8 @@ function isMark(value){
         case '+':
         case '-':
         case '*':
-        case '=':
         case '^':
+        case '=':
             return true;
         default:
             return false;
@@ -46,7 +46,7 @@ function calculate(a, b, mark){
       result =  parseFloat(a) / parseFloat(b);
     } else if ( mark === '^') {
       result= parseFloat(a) ** parseFloat(b);
-    
+    }
     return result;
 }
 
